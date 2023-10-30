@@ -1,0 +1,24 @@
+const { List } = require('../app/listmodel.js');
+
+exports.handler = async (event, context) => {
+  try {
+    const list = await List.findById(event.queryStringParameters._id);
+    if (list) {
+      return {
+        statusCode: 200,
+        body: JSON.stringify(list)
+      };
+    } else {
+      return {
+        statusCode: 404,
+        body: JSON.stringify({ message: `Title not found with id: ${event.queryStringParameters._id}` })
+      };
+    }
+  } catch (err) {
+    console.error(err);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ message: "An error occurred while retrieving entries in list." })
+    };
+  }
+};

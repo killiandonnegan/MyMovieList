@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <script src="/server.js"></script> <!-- server code -->
+        <script src="/scripts.js"></script> <!-- functions  -->
+        <link href="/style.css" rel="stylesheet"> <!-- css -->
+
+        <script src="https://kit.fontawesome.com/3dcdcfe99f.js" crossorigin="anonymous"></script> <!--Importing icons-->
+    </head>
+    <body>
+
+
+        <img id="logocorner" src="/assets/logo.png" onclick="location.href='/index.html'"> <!--Logo-->
+        
+        <div id="menuicons"> <!--Search and List icons-->
+            <i class="fa-solid fa-heart" onclick="location.href='/watchlist.html'"></i>
+        </div>
+        <div id="searchbar">
+            <input type="text" id="searchtitle" placeholder="Search for a title...">
+            <button onclick="searchTitle(document.getElementById('searchtitle').value, document.getElementById('searchtype').value)"><i id="searchicon" class="fa-solid fa-magnifying-glass"></i></button>
+            <select id="searchtype" name="Type">
+                <option value="Movie">Movie</option>
+                <option value="Series">Series</option>
+            </select>
+        </div>
+
+
+        <div class="space"></div>
+
+        <h4 id="trendingmovielabel">Trending Movies</h4> <!--Label for Trending Movies-->
+
+        <div id="scrollmovie" class="scroll">
+            <div id="trendingmovie">
+                <div class="movie">
+                    <div class="poster"></div>
+                </div>
+            </div>
+            <div id="scrollprev" class="arrow-btn prev"><i class="fas fa-chevron-left"></i></div>
+            <div id="scrollnext" class="arrow-btn next"><i class="fas fa-chevron-right"></i></div>
+        </div>
+
+
+        <h4 id="trendingtvlabel">Trending Series</h4> <!--Label for Trending Series-->
+        
+        <div class="space"></div>
+
+        <div id="scrolltv" class="scroll">
+            <div id="trendingtv">
+                <div class="movie">
+                    <div class="poster"></div>
+                </div>
+            </div>
+            <div id="scrollprev2" class="arrow-btn prev"><i class="fas fa-chevron-left"></i></div>
+            <div id="scrollnext2" class="arrow-btn next"><i class="fas fa-chevron-right"></i></div>
+        </div>
+
+
+
+        <div id="modal-open" class="modal"> <!--modal which pops up when user takes an action (adds/removes)-->
+            <div class="modal-content">
+              <span class="modal-close"></span>
+              <p></p>
+            </div>
+        </div>
+
+
+        <script>
+            getWhatsNew(); //Loads latest movies and series
+            scroll(document.querySelector('#scrollmovie'), document.querySelector('#trendingmovie'), document.querySelector('.movie').clientWidth, document.querySelector('#scrollprev'), document.querySelector('#scrollnext'));
+            scroll(document.querySelector('#scrolltv'), document.querySelector('#trendingtv'), document.querySelector('.movie').clientWidth, document.querySelector('#scrollprev2'), document.querySelector('#scrollnext2'));
+            enterSearch(); //function which runs searchTitle() when user hits 'Enter' key
+        </script>
+    </body>
+</html> 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <script src="/server.js"></script> <!--Server code-->
+        <script src="/scripts.js"></script> <!--Functions-->
+        <link href="/style.css" rel="stylesheet"> <!--CSS-->
+
+        <script src="https://kit.fontawesome.com/3dcdcfe99f.js" crossorigin="anonymous"></script> <!--Importing icons-->
+    </head>
+
+    <body>
+        <img id="logocorner" src="/assets/logo.png" onclick="location.href='/index.html'"> <!--Logo-->
+
+        <div id="menuicons"> <!--Search and List icons-->
+
+            <i class="fa-solid fa-house" onclick="location.href='/index.html'"></i>
+        </div>
+
+        <!--<div id="listlabel">My List</div> Label for user's list-->
+
+        <div id="scrolllist" class="scroll">
+            <h4 id="MyMovieListLabel">MyMovieList</h4>
+            <div id="list">
+                <div class="movie">
+                    <div class="poster"></div>
+                </div>
+            </div>
+            <div id="scrollprev" class="arrow-btn prev" style="top: 40%;"><i class="fas fa-chevron-left"></i></div>
+            <div id="scrollnext" class="arrow-btn next" style="top: 40%;"><i class="fas fa-chevron-right"></i></div>
+        </div>
+
+        <div id="modal-open" class="modal">  <!--modal which pops up when user takes an action (adds/removes)-->
+            <div class="modal-content">
+              <span class="modal-close"></span>
+              <p></p>
+            </div>
+        </div>
+
+        <script>
+            getList(); //Retrieves users list
+            scroll(document.querySelector('#scrolllist'), document.querySelector('#list'), document.querySelector('.movie').clientWidth, document.querySelector('#scrollprev'), document.querySelector('#scrollnext'));
+        </script>
+    </body>
+</html>

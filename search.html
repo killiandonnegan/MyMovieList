@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <script src="/server.js"></script> <!--Server code-->
+        <script src="/scripts.js"></script> <!--Functions-->
+        <link href="/style.css" rel="stylesheet"> <!--CSS-->
+    
+
+        <script src="https://kit.fontawesome.com/3dcdcfe99f.js" crossorigin="anonymous"></script> <!--Importing icons-->
+    </head>
+
+    <body>
+        <img id="logocorner" src="/assets/logo.png" onclick="location.href='/index.html'"> <!--Logo-->
+
+        <div id="menuicons"> <!--Search and List icons-->
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-heart" onclick="location.href='/watchlist.html'"></i>
+        </div>        
+
+        <div id="searchbar">
+            <input type="text" id="searchtitle" placeholder="Search for a title...">
+            <button onclick="searchTitle(document.getElementById('searchtitle').value, document.getElementById('searchtype').value)"><i id="searchicon" class="fa-solid fa-magnifying-glass"></i></button>
+            <select id="searchtype" name="Type">
+                <option value="Movie">Movie</option>
+                <option value="Series">Series</option>
+            </select>
+        </div>
+
+        <div id="scrollsearch" class="scroll">
+            <div id="searchresults">
+                <div class="movie">
+                    <div class="poster"></div>
+                </div>
+            </div>
+            <div style="visibility: hidden; top: 45%;" id="scrollprev" class="arrow-btn prev"><i class="fas fa-chevron-left"></i></div>
+            <div style="visibility: hidden; top: 45%;" id="scrollnext" class="arrow-btn next"><i class="fas fa-chevron-right"></i></div>
+        </div>
+
+        <div id="modal-open" class="modal">  <!--modal which pops up when user takes an action (adds/removes)-->
+            <div class="modal-content">
+              <span class="modal-close"></span>
+              <p>Some text in the Modal..</p>
+            </div>
+        </div>
+        
+        <script>
+            enterSearch(); //function which runs searchTitle() when user hits 'Enter' key
+            scroll(document.querySelector('#scrollsearch'), document.querySelector('#searchresults'), document.querySelector('.movie').clientWidth, document.querySelector('#scrollprev'), document.querySelector('#scrollnext'));
+        </script>
+    </body>
+</html>
+
